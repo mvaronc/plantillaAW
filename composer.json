@@ -1,0 +1,17 @@
+{
+    "name": "mvaronc/plantilla-aw",
+    "description": "Plantilla inicial para la construccion de otros proyectos",
+    "type": "project",
+    "authors": [
+        {
+            "name": "mvaronc",
+            "email": "mvaronc@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PlantillaAW\\": "src/"
+        }
+    },
+    "require": {}
+}
