@@ -18,16 +18,14 @@ class Model {
     }
 
     public function getById($id) {
-        return Database::select($this->table, "*", ["id"], [$id]);
+        return (Database::select($this->table, "*", ["id"], [$id])[0])??null;
     }
 
-    public function insert($campos, $valores) {
-        $datos = array_combine($campos, $valores);
+    public function insert($datos) {
         return Database::insert($this->table, $datos);
     }
 
-    public function updateById($id, $campos, $valores) {
-        $datos = array_combine($campos, $valores);
+    public function updateById($id, $datos) {
         return Database::update($this->table, $datos, "id='$id'");
     }
 
