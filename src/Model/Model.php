@@ -6,6 +6,8 @@ use PlantillaAW\Database\Database;
 
 class Model {
     protected $table = null;
+    protected $fillable = [];// Campos que se pueden rellenar en la tabla, para evitar inyecciones de SQL.
+    protected $restrictions = [];//nombre del campo y la expresión regular que debe cumplir, para validar los datos antes de insertarlos en la base de datos.
 
     public function __construct($table) {
         $this->table = $table;
@@ -31,5 +33,27 @@ class Model {
 
     public function deleteById($id) {
         return Database::delete($this->table, $id);
+    }
+    public function getFillable() {
+        return $this->fillable;
+    }
+    public function setFillable($fillable) {
+        $this->fillable = $fillable;
+    }
+    public function getRestrictions() {
+        return $this->restrictions;
+    }
+    public function setRestrictions($restrictions) {
+        $this->restrictions = $restrictions;
+    }
+    public function getTable() {
+        return $this->table;
+    }
+    public function getAsArray() {
+        $datos = [];
+        foreach ($this->fillable as $campo) {
+            $datos[$campo] = $this->{$campo} ?? null;
+        }
+        return $datos;
     }
 }

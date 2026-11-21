@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo RUTA_APP ??''; ?>/css/styles.css">
     <title><?php  echo $titulo?? ''; ?></title>
+    <script src=<?= $rutaScript ?? '' ?>></script>
 </head>
 <body>
     <header>
